@@ -44,7 +44,7 @@ fn Home() -> impl IntoView {
         <main class="overflow-hidden">
             <div class="bg-gray-900 text-gray-100 h-[100svh] overflow-hidden">
                 <div class="h-full flex">
-                    <div class="flex-1 min-w-[200px] resize-x overflow-hidden border-r border-gray-700 p-4">
+                    <div class="flex-1 flex w-1/2 min-w-[200px] resize-x overflow-hidden border-r border-gray-700 p-4">
                         <textarea
                             prop:value=move || input_value.get()
                             on:input:target=move |ev| set_values(ev.target().value())
@@ -55,8 +55,7 @@ fn Home() -> impl IntoView {
 
                     <div class="w-2 bg-gray-800 hover:bg-blue-500 transition-colors duration-150 cursor-col-resize"></div>
 
-                    <div class="flex-1 min-w-[200px] p-4 bg-gray-800">
-                        <MarkdownDownloader content=preview_value.get_untracked().clone() />
+                    <div class="flex w-1/2 flex-col gap-2 min-w-[200px] p-4 bg-gray-800">
                         <div
                             id="parsed_str"
                             class="h-full rounded-lg bg-gray-900 p-4
@@ -79,6 +78,7 @@ fn Home() -> impl IntoView {
                             "
                             inner_html=preview_value
                         ></div>
+                        <MarkdownDownloader />
                     </div>
                 </div>
             </div>
@@ -87,15 +87,17 @@ fn Home() -> impl IntoView {
 }
 
 #[component]
-fn MarkdownDownloader(#[prop(into)] content: String) -> impl IntoView {
+fn MarkdownDownloader() -> impl IntoView {
     set_panic_hook();
 
     view! {
-        <div>
-
-            <button on:click=move |_| {
+        <button
+            class="bg-indigo-500 mb-1 border-0 py-1 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            on:click=move |_| {
                 download_html_as_pdf("parsed_str");
-            }>Download as PDF</button>
-        </div>
+            }
+        >
+            Download as PDF
+        </button>
     }
 }
