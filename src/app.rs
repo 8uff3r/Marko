@@ -56,28 +56,27 @@ fn Home() -> impl IntoView {
                     <div class="w-2 bg-gray-800 hover:bg-blue-500 transition-colors duration-150 cursor-col-resize"></div>
 
                     <div class="flex w-1/2 flex-col gap-2 min-w-[200px] p-4 bg-gray-800">
-                        <div
-                            id="parsed_str"
-                            class="h-full rounded-lg bg-gray-900 p-4
-                            text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg
-                            [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mt-6 [&_h1]:mb-3
-                            [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-5 [&_h2]:mb-2
-                            [&_h3]:text-lg [&_h3]:font-medium [&_h3]:mt-4 [&_h3]:mb-1
-                            [&_p]:mb-4
-                            [&_a]:text-teal-500 [&_a]:underline [&_a]:hover:text-teal-700
-                            [&_strong]:font-semibold [&_strong]:text-gray-900
-                            [&_code]:bg-gray-800 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:font-mono [&_code]:text-sm
-                            [&_pre]:bg-gray-800 [&_pre]:p-4 [&_pre]:rounded [&_pre]:overflow-x-auto
-                            [&_pre>code]:bg-transparent [&_pre>code]:p-0
-                            [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4
-                            [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4
-                            [&_li]:mb-2
-                            [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:mb-4
-                            [&_pre]:bg-[#1E2022]
-                            overflow-auto
-                            "
-                            inner_html=preview_value
-                        ></div>
+                        <div class="h-full rounded-lg bg-gray-900 p-4
+                        text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg
+                        [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mt-6 [&_h1]:mb-3
+                        [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-5 [&_h2]:mb-2
+                        [&_h3]:text-lg [&_h3]:font-medium [&_h3]:mt-4 [&_h3]:mb-1
+                        [&_p]:mb-4
+                        [&_a]:text-teal-500 [&_a]:underline [&_a]:hover:text-teal-700
+                        [&_strong]:font-semibold [&_strong]:text-gray-900
+                        [&_code]:bg-gray-800 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:font-mono [&_code]:text-sm
+                        [&_pre]:bg-gray-800 [&_pre]:p-4 [&_pre]:rounded [&_pre]:overflow-x-auto
+                        [&_pre>code]:bg-transparent [&_pre>code]:p-0
+                        [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4
+                        [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4
+                        [&_li]:mb-2
+                        [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:mb-4
+                        [&_pre]:bg-[#1E2022]
+                        overflow-auto
+                        ">
+
+                            <div id="parsed_str" inner_html=preview_value></div>
+                        </div>
                         <MarkdownDownloader />
                     </div>
                 </div>
