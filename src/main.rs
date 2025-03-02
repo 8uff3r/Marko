@@ -1,4 +1,5 @@
 mod app;
+mod js_interop;
 
 use app::*;
 use leptos::{logging, mount};

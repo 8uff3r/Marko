@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <meta charset="utf-8" />
     <link data-trunk rel="rust" data-wasm-opt="z" />
     <link data-trunk rel="icon" type="image/ico" href="/public/favicon.ico" />
     <link data-trunk rel="tailwind-css" href="/style/tailwind.css" />
-    <title>Leptos • Counter with Tailwind</title>
+    <title>Marko</title>
+      <script type="module">
+
+  function downloadHtmlAsPdf(elementId, filename = 'document.pdf') {
+    const element = document.getElementById(elementId);
+
+    if (!element) {
+      console.error(`Element with ID "${elementId}" not found.`);
+      return;
+    }
+
+    console.log("called")
+    const doc = new jspdf.jsPDF();
+
+    doc.html(element, {
+      callback: function (doc) {
+        doc.save(filename);
+      },
+      margin: [10, 10, 10, 10],
+      autoPaging: 'text',
+      x: 0,
+      y: 0,
+      width: doc.internal.pageSize.getWidth(),
+      windowWidth: element.offsetWidth
+    });
+  }
+  window.downloadHtmlAsPdf = downloadHtmlAsPdf
+  </script>
   </head>
 
-  <body></body>
+  <body>
+  </body>
 </html>

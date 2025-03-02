@@ -1,3 +1,4 @@
+use crate::js_interop::*;
 use leptos::prelude::*;
 use leptos_meta::*;
 use leptos_router::{
@@ -55,7 +56,9 @@ fn Home() -> impl IntoView {
                     <div class="w-2 bg-gray-800 hover:bg-blue-500 transition-colors duration-150 cursor-col-resize"></div>
 
                     <div class="flex-1 min-w-[200px] p-4 bg-gray-800">
+                        <MarkdownDownloader content=preview_value.get_untracked().clone() />
                         <div
+                            id="parsed_str"
                             class="h-full rounded-lg bg-gray-900 p-4
                             text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg
                             [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mt-6 [&_h1]:mb-3
@@ -80,5 +83,19 @@ fn Home() -> impl IntoView {
                 </div>
             </div>
         </main>
+    }
+}
+
+#[component]
+fn MarkdownDownloader(#[prop(into)] content: String) -> impl IntoView {
+    set_panic_hook();
+
+    view! {
+        <div>
+
+            <button on:click=move |_| {
+                download_html_as_pdf("parsed_str");
+            }>Download as PDF</button>
+        </div>
     }
 }
