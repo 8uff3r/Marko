@@ -38,6 +38,7 @@ fn Home() -> impl IntoView {
         let parsed_str = parse_string(value);
         set_preview_value.set(parsed_str);
     };
+    let is_empty = Memo::new(move |_| preview_value.get().is_empty());
 
     view! {
         <Title text="Marko" />
@@ -77,7 +78,7 @@ fn Home() -> impl IntoView {
 
                             <div id="parsed_str" inner_html=preview_value></div>
                         </div>
-                        <MarkdownDownloader />
+                        <MarkdownDownloader disabled=is_empty />
                     </div>
                 </div>
             </div>
@@ -86,12 +87,13 @@ fn Home() -> impl IntoView {
 }
 
 #[component]
-fn MarkdownDownloader() -> impl IntoView {
+fn MarkdownDownloader(#[prop(into)] disabled: Memo<bool>) -> impl IntoView {
     set_panic_hook();
 
     view! {
         <button
-            class="bg-indigo-500 mb-1 border-0 py-1 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            class="bg-indigo-500 mb-1 border-0 py-1 px-6 focus:outline-none hover:bg-indigo-600 disabled:bg-gray-600 rounded text-lg"
+            disabled=disabled
             on:click=move |_| {
                 download_html_as_pdf("parsed_str");
             }
