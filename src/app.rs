@@ -24,28 +24,25 @@ pub fn App() -> impl IntoView {
 fn Home() -> impl IntoView {
     let (value, set_value) = signal(0);
 
-    // thanks to https://tailwindcomponents.com/component/blue-buttons-example for the showcase layout
     view! {
         <Title text="Leptos + Tailwindcss" />
         <main>
-            <div class="bg-gradient-to-tl from-blue-800 to-blue-500 text-white font-mono flex flex-col min-h-screen">
-                <div class="flex flex-row-reverse flex-wrap m-auto">
-                    <button
-                        on:click=move |_| set_value.update(|value| *value += 1)
-                        class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-700 border-blue-800 text-white"
-                    >
-                        "+"
-                    </button>
-                    <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
-                        {value}
-                    </button>
-                    <button
-                        on:click=move |_| set_value.update(|value| *value -= 1)
-                        class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-700 border-blue-800 text-white"
-                        class:invisible=move || { value.get() < 1 }
-                    >
-                        "-"
-                    </button>
+            <div class="h-screen bg-gray-900 text-gray-100">
+                <div class="h-full flex">
+                    <div class="flex-1 min-w-[200px] resize-x overflow-auto border-r border-gray-700 p-4">
+                        <textarea
+                            class="w-full h-full bg-gray-800 text-gray-100 rounded-lg p-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                            placeholder="Enter your text here..."
+                        ></textarea>
+                    </div>
+
+                    <div class="w-2 bg-gray-800 hover:bg-blue-500 transition-colors duration-150 cursor-col-resize"></div>
+
+                    <div class="flex-1 min-w-[200px] p-4 bg-gray-800">
+                        <div class="h-full rounded-lg bg-gray-900 p-4">
+                            Preview content goes here
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
