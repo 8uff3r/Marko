@@ -15,7 +15,7 @@ pub fn App() -> impl IntoView {
         <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico" />
         <Router>
             <Routes fallback=|| "Page not found.">
-                <Route path=StaticSegment("") view=Home />
+                <Route path=StaticSegment("/Marko") view=Home />
             </Routes>
         </Router>
     }
